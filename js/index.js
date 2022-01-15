@@ -2,8 +2,6 @@
 
 //change to see
 
-
-
 let InputDir = { x: 0, y: 0 };
 const foodSound = new Audio("food.mp3");
 const gameOverSound = new Audio("gameover.mp3");
@@ -18,7 +16,7 @@ food = { x: 6, y: 7 };
 // Game Functions
 function main(ctime) {
   window.requestAnimationFrame(main);
-  console.log(ctime);
+  //   console.log(ctime);
   if ((ctime - lastPaintTime) / 1000 < 1 / speed) {
     return;
   }
@@ -104,75 +102,29 @@ function gameEngine() {
 
 // Main logic starts here
 window.requestAnimationFrame(main);
+InputDir = { x: 0, y: 0 }; // Start the game
 window.addEventListener("keydown", (e) => {
-  InputDir = { x: 0, y: 1 }; // Start the game
-  moveSound.play();
 
-  if(e.key == "ArrowUp" || e.key == "w"){
-    console.log("ArrowUp");
+  if (e.key == "ArrowUp" || e.key == "w" || e.key == "W") {
+    moveSound.play();
     InputDir.x = 0;
     InputDir.y = -1;
-  }
-
-  else if(e.key == "ArrowDown" || e.key == "s"){
-    console.log("ArrowDown");
+  } else if (e.key == "ArrowDown" || e.key == "s" || e.key == "S") {
+    moveSound.play();
     InputDir.x = 0;
     InputDir.y = 1;
-  }
-
-//   else if(e.key == "ArrowLeft" || e.key =="")
-
-else if(e.key == "ArrowLeft" || e.key =="a"){
-    console.log("ArrowLeft");
-      InputDir.x = -1;
-      InputDir.y = 0;
-}
-
-else 
-
-  switch (e.key) {
-    // case "ArrowUp":
-    //   console.log("ArrowUp");
-    //   InputDir.x = 0;
-    //   InputDir.y = -1;
-    //   break;
-    // case "w":
-    //   console.log("w");
-    //   InputDir.x = 0;
-    //   InputDir.y = -1;
-    //   break;
-    // case "ArrowDown":
-    //   console.log("ArrowDown");
-    //   InputDir.x = 0;
-    //   InputDir.y = 1;
-    //   break;
-    // case "s":
-    //   console.log("s");
-    //   InputDir.x = 0;
-    //   InputDir.y = 1;
-    //   break;
-    case "ArrowLeft":
-      console.log("ArrowLeft");
-      InputDir.x = -1;
-      InputDir.y = 0;
-      break;
-    case "a":
-      console.log("a");
-      InputDir.x = -1;
-      InputDir.y = 0;
-      break;
-
-    case "ArrowRight":
-      console.log("ArrowRight");
-      InputDir.x = 1;
-      InputDir.y = 0;
-      break;
-    case "d":
-      console.log("d");
-      InputDir.x = 1;
-      InputDir.y = 0;
-      break;
-    default:
-      break;
-  }
+  } else if (e.key == "ArrowLeft" || e.key == "a" || e.key == "A") {
+    moveSound.play();
+    InputDir.x = -1;
+    InputDir.y = 0;
+  } else if (e.key == "ArrowRight" || e.key == "d" || e.key == "D") {
+    moveSound.play();
+    InputDir.x = 1;
+    InputDir.y = 0;
+  } 
+//   else reu 
+// {
+//     InputDir.x = 0;
+//     InputDir.y = 0;
+//   }
 });
