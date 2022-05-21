@@ -13,12 +13,20 @@
   align-items: center;
 }
 
-#scoreBox {
+.score-boxes{
   position: absolute;
-  top: 9px;
-  right: 200px;
   font-size: 39px;
   font-weight: bold;
+}
+
+#scoreBox {
+  top: 9px;
+  right: 200px;
+}
+
+#highScoreBox {
+  top: 50px;
+  right: 150px;
 }
 
 #board {

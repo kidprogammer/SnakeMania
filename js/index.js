@@ -24,10 +24,22 @@ function main(ctime) {
   gameEngine();
 }
 
+const updateHighScoreDisplay = () =>
+  highScoreBox.innerHTML = `High Score: ${localStorage.getItem("highScore") ? localStorage.getItem("highScore") : "0"}`
+
+const updateHighScore = (score) => {
+  const currentHighScore = localStorage.getItem("highScore")
+  if(score > parseInt(currentHighScore)){
+    localStorage.setItem("highScore", score)
+    updateHighScoreDisplay();
+  }
+}
+
 function isCollide(snake) {
   //If you bump into yourself
   for (let i = 1; i < snakeArr.length; i++) {
     if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
+      updateHighScore(score);
       return true;
     }
     // If you bump into the wall
@@ -37,6 +49,7 @@ function isCollide(snake) {
       snake[0].y >= 18 ||
       snake[0].y <= 0
     ) {
+      updateHighScore(score)
       return true;
     }
   }
@@ -101,6 +114,7 @@ function gameEngine() {
 }
 
 // Main logic starts here
+updateHighScoreDisplay();
 window.requestAnimationFrame(main);
 InputDir = { x: 0, y: 0 }; // Start the game
 window.addEventListener("keydown", (e) => {
